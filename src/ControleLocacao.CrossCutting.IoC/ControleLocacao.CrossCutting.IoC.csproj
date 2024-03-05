@@ -11,13 +11,12 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.25" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
-  
-  
+
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\ControleLocacao.CrossCutting.Common.csproj" />
-    <ProjectReference Include="..\ClassLibrary2\ControleLocacao.Domain.csproj" />
-    <ProjectReference Include="..\ClassLibrary3\ControleLocacao.Infra.Data.csproj" />
     <ProjectReference Include="..\ControleLocacao.Application\ControleLocacao.Application.csproj" />
+    <ProjectReference Include="..\ControleLocacao.CrossCutting.Common\ControleLocacao.CrossCutting.Common.csproj" />
+    <ProjectReference Include="..\ControleLocacao.Domain\ControleLocacao.Domain.csproj" />
+    <ProjectReference Include="..\ControleLocacao.Infra.Data\ControleLocacao.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

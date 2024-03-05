@@ -14,11 +14,10 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
-  
-  
+
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\ControleLocacao.CrossCutting.Common.csproj" />
     <ProjectReference Include="..\ControleLocacao.Application\ControleLocacao.Application.csproj" />
+    <ProjectReference Include="..\ControleLocacao.CrossCutting.Common\ControleLocacao.CrossCutting.Common.csproj" />
     <ProjectReference Include="..\ControleLocacao.CrossCutting.IoC\ControleLocacao.CrossCutting.IoC.csproj" />
   </ItemGroup>
 

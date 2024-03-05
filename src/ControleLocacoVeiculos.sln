@@ -5,11 +5,11 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{CA020D82-AE3A-42C8-99B3-CBF11E61C10A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleLocacao.CrossCutting.Common", "ClassLibrary1\ControleLocacao.CrossCutting.Common.csproj", "{76587B63-832C-49B7-A42D-68860426C788}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleLocacao.CrossCutting.Common", "ControleLocacao.CrossCutting.Common\ControleLocacao.CrossCutting.Common.csproj", "{76587B63-832C-49B7-A42D-68860426C788}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleLocacao.Domain", "ClassLibrary2\ControleLocacao.Domain.csproj", "{F5A24819-B72F-4559-9015-0675C373DE90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleLocacao.Domain", "ControleLocacao.Domain\ControleLocacao.Domain.csproj", "{F5A24819-B72F-4559-9015-0675C373DE90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleLocacao.Infra.Data", "ClassLibrary3\ControleLocacao.Infra.Data.csproj", "{775B510C-0498-4401-A50F-03B94861A828}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleLocacao.Infra.Data", "ControleLocacao.Infra.Data\ControleLocacao.Infra.Data.csproj", "{775B510C-0498-4401-A50F-03B94861A828}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{25A5907E-B729-482A-8AD7-C55E5B2A2BBC}"
 EndProject

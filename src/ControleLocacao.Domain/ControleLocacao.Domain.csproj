@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\ControleLocacao.CrossCutting.Common.csproj" />
+    <ProjectReference Include="..\ControleLocacao.CrossCutting.Common\ControleLocacao.CrossCutting.Common.csproj" />
   </ItemGroup>
   
 </Project>
