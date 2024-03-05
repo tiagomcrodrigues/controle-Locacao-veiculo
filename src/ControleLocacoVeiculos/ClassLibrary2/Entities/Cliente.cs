@@ -49,12 +49,12 @@ namespace ControleLocacao.Domain.Entities
             {
                 if ((TipoPessoa ?? string.Empty) == "F")
                 {
-                    if (Documento?.Length == 11)
+                    if (Documento?.Length != 11)
                         AddNotification(nameof(Documento), $"O {nameof(Documento)} deve conter 11 Caracteres ");
                 }
                 else if ((TipoPessoa ?? string.Empty) == "J")
                 {
-                    if (Documento?.Length == 14)
+                    if (Documento?.Length != 14)
                         AddNotification(nameof(Documento), $"O {nameof(Documento)} deve conter 14 Caracteres ");
                 }
             }

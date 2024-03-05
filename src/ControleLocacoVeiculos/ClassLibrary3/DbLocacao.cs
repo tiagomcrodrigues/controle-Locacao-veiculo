@@ -11,8 +11,11 @@ namespace ControleLocacao.Infra.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CategoriaConfiguration());
+            modelBuilder.ApplyConfiguration(new ClienteConfiguration());
+
         }
 
         public virtual DbSet<Categoria> Categorias { get; set; }
+        public virtual DbSet<Cliente> Clientees { get; set;}
     }
 }

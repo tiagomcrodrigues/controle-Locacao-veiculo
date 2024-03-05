@@ -7,6 +7,8 @@ using ControleLocacao.Domain.Services;
 using ControleLocacao.Application.Ports.Categorias;
 using ControleLocacao.Application.UseCases.Categorias;
 using ControleLocacao.CrossCutting.Common.Abstractions;
+using ControleLocacao.Application.Ports.Clientes;
+using ControleLocacao.Application.UseCases.Clientes;
 
 namespace ControleLocacao.CrossCutting.IoC
 {
@@ -31,11 +33,12 @@ namespace ControleLocacao.CrossCutting.IoC
 
             // Repositórios
             service.AddScoped<ICategoriaRepository, CategoriaRepository>();
+            service.AddScoped<IClienteRepository, ClienteRepository>();
 
 
             // Serviços de Domínio
             service.AddScoped<ICategoriaService, CategoriaService>();
-
+            service.AddScoped<IClienteService, ClienteService>();
 
             // Casos de Uso
             service.AddScoped<ICategoriaAddUseCase, CategoriaAddUseCase>();
@@ -44,6 +47,11 @@ namespace ControleLocacao.CrossCutting.IoC
             service.AddScoped<ICategoriaUpdateUseCase, CategoriaUpdateUseCase>();
             service.AddScoped<ICategoriaDeleteUseCase, CategoriaDeleteUseCase>();
 
+            service.AddScoped<IClienteAddUseCase, ClienteAddUseCase>();
+            service.AddScoped<IClienteGetByIdUseCase, ClienteGetByIdUseCase>();
+            service.AddScoped<IClienteGetAllUseCase, ClienteGetAllUseCase>();
+            service.AddScoped<IClienteUpdateUseCase, ClienteUpdateUseCase>();
+            service.AddScoped<IClienteDeleteUseCase, ClienteDeleteUseCase>();
 
             return service;
 
