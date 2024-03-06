@@ -1,4 +1,5 @@
-﻿using Flunt.Notifications;
+﻿using ControleLocacao.CrossCutting.Common.Models;
+using Flunt.Notifications;
 
 namespace ControleLocacao.Domain.Entities
 {
@@ -15,10 +16,9 @@ namespace ControleLocacao.Domain.Entities
         }
 
         public int Id { get; private set; }
-        public int CategotiaId { get; set; }
+        public SimpleIdNameModel Categotia { get; set; }
         public string? Marca { get; set; }
         public string? Modelo { get; set; }
-        public string? Documento { get; set; }
         public string? Versao { get; set; }
         public int AnoModelo { get; set; }
         public int AnoFabricacao { get; set; }
@@ -28,8 +28,8 @@ namespace ControleLocacao.Domain.Entities
 
         public void Validate()
         {
-            if (CategotiaId <= 0)
-                AddNotification(nameof(CategotiaId), $"A {nameof(CategotiaId)} é obrigatório");
+            if (Categotia.Id <= 0)
+                AddNotification(nameof(Categotia.Id), $"A {nameof(Categotia.Id)} é obrigatório");
 
             if (string.IsNullOrWhiteSpace(Marca))
                 AddNotification(nameof(Marca), "A marca é obrigatório");

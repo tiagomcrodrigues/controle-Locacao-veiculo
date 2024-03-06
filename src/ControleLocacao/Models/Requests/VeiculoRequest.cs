@@ -1,10 +1,8 @@
-﻿using ControleLocacao.Domain.Entities;
-
-namespace ControleLocacao.Infra.Data.Tables
+﻿namespace ControleLocacao.Api.Models.Requests
 {
-    public class Veiculo : IKeyIdentitication
+    public class VeiculoRequest
     {
-        public int Id { get; private set; }
+        
         public int CategotiaId { get; set; }
         public string? Marca { get; set; }
         public string? Modelo { get; set; }
@@ -12,9 +10,5 @@ namespace ControleLocacao.Infra.Data.Tables
         public int AnoModelo { get; set; }
         public int AnoFabricacao { get; set; }
         public string? Placa { get; set; }
-        public bool Inativo { get; set; } 
-
-
-        public virtual Categoria Categoria { get; set; }
     }
 }

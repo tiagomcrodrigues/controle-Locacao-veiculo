@@ -1,11 +1,11 @@
-﻿using ControleLocacao.Domain.Entities;
+﻿using ControleLocacao.CrossCutting.Common.Models;
 
-namespace ControleLocacao.Infra.Data.Tables
+namespace ControleLocacao.Api.Models.Responses
 {
-    public class Veiculo : IKeyIdentitication
+    public class VeiculoResponse
     {
-        public int Id { get; private set; }
-        public int CategotiaId { get; set; }
+        public int? Id { get;  set; }
+        public SimpleIdNameModel Categotia { get; set; }
         public string? Marca { get; set; }
         public string? Modelo { get; set; }
         public string? Versao { get; set; }
@@ -13,8 +13,5 @@ namespace ControleLocacao.Infra.Data.Tables
         public int AnoFabricacao { get; set; }
         public string? Placa { get; set; }
         public bool Inativo { get; set; } 
-
-
-        public virtual Categoria Categoria { get; set; }
     }
 }

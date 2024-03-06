@@ -12,8 +12,8 @@ namespace ControleLocacao.Api.Extensions
             {
                 Id = id,
                 Nome = request.Nome,
-                valorDiaria = request.valorDiaria,
-                valorSeguro = request.valorSeguro
+                valorDiaria = request.ValorDiaria,
+                valorSeguro = request.ValorSeguro
             };
 
         public static CategoriaResponse Map(this CategoriaDto dto)

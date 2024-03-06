@@ -14,5 +14,8 @@ namespace ControleLocacao.Infra.Data.Tables
         public string? Nome { get; set; }
         public double valorDiaria { get; set; }
         public double valorSeguro { get; set; }
+
+        public virtual ICollection<Veiculo> veiculo { get; set; }    
+
     }
 }

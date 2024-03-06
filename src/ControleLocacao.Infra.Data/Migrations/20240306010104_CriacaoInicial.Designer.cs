@@ -2,6 +2,7 @@
 using ControleLocacao.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleLocacao.Infra.Data.Migrations
 {
     [DbContext(typeof(DbLocacao))]
-    partial class DbLocacaoModelSnapshot : ModelSnapshot
+    [Migration("20240306010104_CriacaoInicial")]
+    partial class CriacaoInicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

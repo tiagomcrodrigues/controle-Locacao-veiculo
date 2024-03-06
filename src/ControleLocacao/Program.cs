@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using ControleLocacao.CrossCutting.IoC;
 using FluentValidation.AspNetCore;
 using ControleLocacao.Api.Extensions;
+using System.Reflection;
+using FluentValidation;
 
 namespace ControleLocacao.Api
 {
@@ -17,7 +19,9 @@ namespace ControleLocacao.Api
             builder.Services.AddControllers(opt => GlobalFilters.Configure(opt));
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-            builder.Services.AddFluentValidation();
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddFluentValidationClientsideAdapters();
+            builder.Services.AddValidatorsFromAssembly(Assembly.GetAssembly(typeof(Program)));
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

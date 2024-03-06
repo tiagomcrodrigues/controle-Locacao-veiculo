@@ -12,10 +12,13 @@ namespace ControleLocacao.Infra.Data
         {
             modelBuilder.ApplyConfiguration(new CategoriaConfiguration());
             modelBuilder.ApplyConfiguration(new ClienteConfiguration());
+            modelBuilder.ApplyConfiguration(new VeiculoConfiguration());
 
         }
 
         public virtual DbSet<Categoria> Categorias { get; set; }
         public virtual DbSet<Cliente> Clientees { get; set;}
+        public virtual DbSet<Veiculo> Veiculoes { get;set; }
+
     }
 }

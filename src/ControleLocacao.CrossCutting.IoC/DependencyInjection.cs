@@ -9,6 +9,8 @@ using ControleLocacao.Application.UseCases.Categorias;
 using ControleLocacao.CrossCutting.Common.Abstractions;
 using ControleLocacao.Application.Ports.Clientes;
 using ControleLocacao.Application.UseCases.Clientes;
+using ControleLocacao.Application.Ports.Veiculos;
+using ControleLocacao.Application.UseCases.Veiculos;
 
 namespace ControleLocacao.CrossCutting.IoC
 {
@@ -34,11 +36,13 @@ namespace ControleLocacao.CrossCutting.IoC
             // Repositórios
             service.AddScoped<ICategoriaRepository, CategoriaRepository>();
             service.AddScoped<IClienteRepository, ClienteRepository>();
+            service.AddScoped<IVeiculoRepository, VeiculoRepository>();
 
 
             // Serviços de Domínio
             service.AddScoped<ICategoriaService, CategoriaService>();
             service.AddScoped<IClienteService, ClienteService>();
+            service.AddScoped<IVeiculoService, VeiculoService>();
 
             // Casos de Uso
             service.AddScoped<ICategoriaAddUseCase, CategoriaAddUseCase>();
@@ -47,11 +51,21 @@ namespace ControleLocacao.CrossCutting.IoC
             service.AddScoped<ICategoriaUpdateUseCase, CategoriaUpdateUseCase>();
             service.AddScoped<ICategoriaDeleteUseCase, CategoriaDeleteUseCase>();
 
-            service.AddScoped<IClienteAddUseCase, ClienteAddUseCase>();
+            service.AddScoped<IClienteAddUseCase    , ClienteAddUseCase>();
             service.AddScoped<IClienteGetByIdUseCase, ClienteGetByIdUseCase>();
-            service.AddScoped<IClienteGetAllUseCase, ClienteGetAllUseCase>();
-            service.AddScoped<IClienteUpdateUseCase, ClienteUpdateUseCase>();
-            service.AddScoped<IClienteDeleteUseCase, ClienteDeleteUseCase>();
+            service.AddScoped<IClienteGetAllUseCase , ClienteGetAllUseCase>();
+            service.AddScoped<IClienteUpdateUseCase , ClienteUpdateUseCase>();
+            service.AddScoped<IClienteDeleteUseCase , ClienteDeleteUseCase>();
+
+
+            service.AddScoped<IVeiculoAddUseCase, VeiculoAddUseCase>();
+            service.AddScoped<IVeiculoGetByIdUseCase, VeiculoGetByIdUseCase>();
+            service.AddScoped<IVeiculoGetAllUseCase, VeiculoGetAllUseCase>();
+            service.AddScoped<IVeiculoUpdateUseCase, VeiculoUpdateUseCase>();
+            service.AddScoped<IVeiculoDeleteUseCase, VeiculoDeleteUseCase>();
+
+
+
 
             return service;
 
