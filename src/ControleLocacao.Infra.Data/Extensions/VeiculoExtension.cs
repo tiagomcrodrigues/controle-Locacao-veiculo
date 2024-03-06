@@ -12,7 +12,7 @@ namespace ControleLocacao.Infra.Data.Extensions
         {
             return new tb.Veiculo()
             {
-                CategotiaId = entidade.Categotia.Id,
+                CategoriaId = entidade.Categoria.Id,
                 Marca = entidade.Marca,
                 Modelo = entidade.Modelo,
                 Versao = entidade.Versao,
@@ -27,9 +27,9 @@ namespace ControleLocacao.Infra.Data.Extensions
         public static dm.Veiculo Map(this tb.Veiculo tabela)
              => new(tabela.Id)
              {
-                 Categotia = new()
+                 Categoria = new()
                  {
-                     Id = tabela.CategotiaId,Nome = tabela.Categoria.Nome
+                     Id = tabela.CategoriaId,Nome = tabela.Categoria.Nome
                  },
                  Marca = tabela.Marca,
                  Modelo = tabela.Modelo,
@@ -42,7 +42,7 @@ namespace ControleLocacao.Infra.Data.Extensions
 
         public static tb.Veiculo Map(this tb.Veiculo tabela, dm.Veiculo entidade)
         {
-            tabela.CategotiaId = entidade.Categotia.Id;
+            tabela.CategoriaId = entidade.Categoria.Id;
             tabela.Marca = entidade.Marca;
             tabela.Modelo = entidade.Modelo;
             tabela.Versao = entidade.Versao;

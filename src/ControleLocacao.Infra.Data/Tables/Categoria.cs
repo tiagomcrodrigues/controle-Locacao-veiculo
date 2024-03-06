@@ -12,10 +12,10 @@ namespace ControleLocacao.Infra.Data.Tables
 
         public int Id { get; set; }
         public string? Nome { get; set; }
-        public double valorDiaria { get; set; }
-        public double valorSeguro { get; set; }
+        public double ValorDiaria { get; set; }
+        public double ValorSeguro { get; set; }
 
-        public virtual ICollection<Veiculo> veiculo { get; set; }    
+        public virtual ICollection<Veiculo> Veiculos { get; set; }    
 
     }
 }

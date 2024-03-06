@@ -20,13 +20,13 @@ namespace ControleLocacao.Infra.Data.Configurations
                 .IsUnicode(false)
                 .IsRequired();
 
-            b.Property(b => b.valorSeguro)
-                .HasColumnName(nameof(Categoria.valorSeguro))
+            b.Property(b => b.ValorSeguro)
+                .HasColumnName(nameof(Categoria.ValorSeguro))
                 .HasColumnType("decimal(16,2)")
                 .IsRequired();
 
-            b.Property(b => b.valorDiaria)
-                .HasColumnName(nameof(Categoria.valorDiaria))
+            b.Property(b => b.ValorDiaria)
+                .HasColumnName(nameof(Categoria.ValorDiaria))
                 .HasColumnType("decimal(16,2)")
                 .IsRequired();
 

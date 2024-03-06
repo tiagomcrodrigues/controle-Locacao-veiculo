@@ -16,7 +16,7 @@ namespace ControleLocacao.Domain.Entities
         }
 
         public int Id { get; private set; }
-        public SimpleIdNameModel Categotia { get; set; }
+        public SimpleIdNameModel Categoria { get; set; }
         public string? Marca { get; set; }
         public string? Modelo { get; set; }
         public string? Versao { get; set; }
@@ -28,8 +28,8 @@ namespace ControleLocacao.Domain.Entities
 
         public void Validate()
         {
-            if (Categotia.Id <= 0)
-                AddNotification(nameof(Categotia.Id), $"A {nameof(Categotia.Id)} é obrigatório");
+            if (Categoria.Id <= 0)
+                AddNotification(nameof(Categoria.Id), $"A {nameof(Categoria.Id)} é obrigatório");
 
             if (string.IsNullOrWhiteSpace(Marca))
                 AddNotification(nameof(Marca), "A marca é obrigatório");

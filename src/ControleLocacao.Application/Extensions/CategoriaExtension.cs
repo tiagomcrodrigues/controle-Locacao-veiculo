@@ -12,8 +12,8 @@ namespace ControleLocacao.Application.Extensions
                 ? new Categoria(dto.Id.Value) 
                 : new Categoria() ;
             entidade.Nome = dto.Nome;
-            entidade.valorSeguro = dto.valorSeguro;
-            entidade.valorDiaria = dto.valorDiaria;
+            entidade.ValorSeguro = dto.valorSeguro;
+            entidade.ValorDiaria = dto.valorDiaria;
             return entidade;
         }
 
@@ -24,8 +24,8 @@ namespace ControleLocacao.Application.Extensions
             return new(entidade.Id)
             {
                 Nome = entidade.Nome,
-                valorSeguro = entidade.valorSeguro,
-                valorDiaria = entidade.valorDiaria
+                valorSeguro = entidade.ValorSeguro,
+                valorDiaria = entidade.ValorDiaria
             };
         }
 

@@ -5,7 +5,7 @@ namespace ControleLocacao.Api.Models.Responses
     public class VeiculoResponse
     {
         public int? Id { get;  set; }
-        public SimpleIdNameModel Categotia { get; set; }
+        public SimpleIdNameModel Categoria { get; set; }
         public string? Marca { get; set; }
         public string? Modelo { get; set; }
         public string? Versao { get; set; }

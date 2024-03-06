@@ -11,7 +11,7 @@ namespace ControleLocacao.Application.Extensions
                 dto.Id.HasValue
                 ? new Veiculo(dto.Id.Value)
                 : new Veiculo();
-            entidade.Categotia = dto.Categotia;
+            entidade.Categoria = dto.Categoria;
             entidade.Marca = dto.Marca;
             entidade.Modelo = dto.Modelo;
             entidade.Versao = dto.Versao;
@@ -29,7 +29,7 @@ namespace ControleLocacao.Application.Extensions
                 return null;
             return new(entidade.Id)
             {
-                Categotia = entidade.Categotia,
+                Categoria = entidade.Categoria,
                 Marca = entidade.Marca,
                 Modelo = entidade.Modelo,
                 Versao = entidade.Versao,

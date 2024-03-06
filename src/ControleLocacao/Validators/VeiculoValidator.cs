@@ -8,8 +8,8 @@ namespace ControleLocacao.Api.Validators
 
         public VeiculoValidator()
         {
-            RuleFor(c => c.CategotiaId)
-                .NotEmpty().WithMessage("Campo Categotia Id é obrigatório");
+            RuleFor(c => c.CategoriaId)
+                .NotEmpty().WithMessage("Campo Categoria Id é obrigatório");
 
             RuleFor(c => c.Marca)
                 .NotEmpty().WithMessage("Campo Marca é obrigatório")

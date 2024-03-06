@@ -11,7 +11,7 @@ namespace ControleLocacao.Api.Extensions
         => new()
         {
             Id = id,
-            Categotia = new() {Id = request.CategotiaId},
+            Categoria = new() {Id = request.CategoriaId},
             Marca = request.Marca,
             Modelo = request.Modelo,
             Versao = request.Versao,
@@ -26,7 +26,7 @@ namespace ControleLocacao.Api.Extensions
             return new()
             {
                 Id = dto.Id.Value,
-                Categotia = dto.Categotia,
+                Categoria = dto.Categoria,
                 Marca = dto.Marca,
                 Modelo = dto.Modelo,
                 Versao = dto.Versao,

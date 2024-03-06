@@ -3,7 +3,7 @@
     public class VeiculoRequest
     {
         
-        public int CategotiaId { get; set; }
+        public int CategoriaId { get; set; }
         public string? Marca { get; set; }
         public string? Modelo { get; set; }
         public string? Versao { get; set; }

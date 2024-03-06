@@ -33,11 +33,11 @@ namespace ControleLocacao.Infra.Data.Migrations
 
                     b.Property<decimal>("valorDiaria")
                         .HasColumnType("decimal(16,2)")
-                        .HasColumnName("valorDiaria");
+                        .HasColumnName("ValorDiaria");
 
                     b.Property<decimal>("valorSeguro")
                         .HasColumnType("decimal(16,2)")
-                        .HasColumnName("valorSeguro");
+                        .HasColumnName("ValorSeguro");
 
                     b.HasKey("Id");
 
@@ -114,9 +114,9 @@ namespace ControleLocacao.Infra.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("AnoModelo");
 
-                    b.Property<int>("CategotiaId")
+                    b.Property<int>("CategoriaId")
                         .HasColumnType("int")
-                        .HasColumnName("CategotiaId");
+                        .HasColumnName("CategoriaId");
 
                     b.Property<ulong>("Inativo")
                         .ValueGeneratedOnAdd()
@@ -150,7 +150,7 @@ namespace ControleLocacao.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategotiaId");
+                    b.HasIndex("CategoriaId");
 
                     b.HasIndex("Marca")
                         .HasDatabaseName("IX_Veiculo_Marca");
@@ -171,7 +171,7 @@ namespace ControleLocacao.Infra.Data.Migrations
                 {
                     b.HasOne("ControleLocacao.Infra.Data.Tables.Categoria", "Categoria")
                         .WithMany("veiculo")
-                        .HasForeignKey("CategotiaId")
+                        .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

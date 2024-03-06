@@ -10,8 +10,8 @@ namespace ControleLocacao.Infra.Data.Extensions
             return new tb.Categoria()
             {
                 Nome = entidade.Nome,
-                valorDiaria = entidade.valorDiaria,
-                valorSeguro = entidade.valorSeguro
+                ValorDiaria = entidade.ValorDiaria,
+                ValorSeguro = entidade.ValorSeguro
             };
         }
 
@@ -19,16 +19,16 @@ namespace ControleLocacao.Infra.Data.Extensions
             => new(tabela.Id)
             {
                 Nome = tabela.Nome,
-                valorDiaria = tabela.valorDiaria,
-                valorSeguro = tabela.valorSeguro
+                ValorDiaria = tabela.ValorDiaria,
+                ValorSeguro = tabela.ValorSeguro
             };
 
         public static tb.Categoria Map(this tb.Categoria tabela, dm.Categoria entidade)
         {
             //tabela.Id = entidade.Id;
             tabela.Nome = entidade.Nome;
-            tabela.valorDiaria = entidade.valorDiaria;
-            tabela.valorSeguro = entidade.valorSeguro;
+            tabela.ValorDiaria = entidade.ValorDiaria;
+            tabela.ValorSeguro = entidade.ValorSeguro;
             return tabela;
         }
 

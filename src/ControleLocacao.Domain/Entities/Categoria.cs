@@ -16,8 +16,8 @@ namespace ControleLocacao.Domain.Entities
         public int Id { get; private set; }
 
         public string? Nome { get; set; }
-        public double valorDiaria { get; set; }
-        public double valorSeguro { get; set; }
+        public double ValorDiaria { get; set; }
+        public double ValorSeguro { get; set; }
 
 
         public void Validate()
@@ -29,11 +29,11 @@ namespace ControleLocacao.Domain.Entities
             if (Nome?.Length <2 || Nome?.Length > 100)
                 AddNotification(nameof(Nome), "O nome deve conter entre 2 e 100 caracteres");
             
-            if (valorDiaria <= 0)
-                AddNotification(nameof(valorDiaria), $"O {nameof(valorDiaria)} não pode ser zero ou negativo");
+            if (ValorDiaria <= 0)
+                AddNotification(nameof(ValorDiaria), $"O {nameof(ValorDiaria)} não pode ser zero ou negativo");
 
-            if (valorSeguro <= 0)
-                AddNotification(nameof(valorSeguro), $"O {nameof(valorSeguro)} não pode ser zero ou negativo");
+            if (ValorSeguro <= 0)
+                AddNotification(nameof(ValorSeguro), $"O {nameof(ValorSeguro)} não pode ser zero ou negativo");
         }
 
     }

@@ -20,8 +20,8 @@ namespace ControleLocacao.Infra.Data.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    valorDiaria = table.Column<decimal>(type: "decimal(16,2)", nullable: false),
-                    valorSeguro = table.Column<decimal>(type: "decimal(16,2)", nullable: false)
+                    ValorDiaria = table.Column<decimal>(type: "decimal(16,2)", nullable: false),
+                    ValorSeguro = table.Column<decimal>(type: "decimal(16,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,7 +58,7 @@ namespace ControleLocacao.Infra.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CategotiaId = table.Column<int>(type: "int", nullable: false),
+                    CategoriaId = table.Column<int>(type: "int", nullable: false),
                     Marca = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Modelo = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
@@ -75,8 +75,8 @@ namespace ControleLocacao.Infra.Data.Migrations
                 {
                     table.PrimaryKey("PK_Veiculo", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Veiculo_Categoria_CategotiaId",
-                        column: x => x.CategotiaId,
+                        name: "FK_Veiculo_Categoria_CategoriaId",
+                        column: x => x.CategoriaId,
                         principalTable: "Categoria",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -101,9 +101,9 @@ namespace ControleLocacao.Infra.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Veiculo_CategotiaId",
+                name: "IX_Veiculo_CategoriaId",
                 table: "Veiculo",
-                column: "CategotiaId");
+                column: "CategoriaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Veiculo_Marca",

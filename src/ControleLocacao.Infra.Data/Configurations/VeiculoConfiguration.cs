@@ -17,8 +17,8 @@ namespace ControleLocacao.Infra.Data.Configurations
             b.Property(nameof(Veiculo.Id))
                 .ValueGeneratedOnAdd();
 
-            b.Property(b => b.CategotiaId)
-                .HasColumnName(nameof(Veiculo.CategotiaId))
+            b.Property(b => b.CategoriaId)
+                .HasColumnName(nameof(Veiculo.CategoriaId))
                 .IsRequired();
              
             b.Property(b=>b.Marca)
@@ -61,8 +61,8 @@ namespace ControleLocacao.Infra.Data.Configurations
             #region Indices
 
             b.HasOne(o => o.Categoria)
-               .WithMany(d => d.veiculo)
-               .HasForeignKey(fk => fk.CategotiaId)
+               .WithMany(d => d.Veiculos)
+               .HasForeignKey(fk => fk.CategoriaId)
                .OnDelete(DeleteBehavior.Restrict);
 
 

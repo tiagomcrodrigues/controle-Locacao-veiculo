@@ -22,8 +22,8 @@ namespace ControleLocacao.Api.Extensions
             {
                 Id = dto.Id.Value,
                 Nome = dto.Nome,
-                valorDiaria = dto.valorDiaria,
-                valorSeguro = dto.valorSeguro
+                ValorDiaria = dto.valorDiaria,
+                ValorSeguro = dto.valorSeguro
             };
         }
 
