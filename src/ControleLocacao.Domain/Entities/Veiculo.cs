@@ -15,7 +15,7 @@ namespace ControleLocacao.Domain.Entities
             Id = id;
         }
 
-        public int Id { get; private set; }
+        public int Id { get;  set; }
         public SimpleIdNameModel Categoria { get; set; }
         public string? Marca { get; set; }
         public string? Modelo { get; set; }

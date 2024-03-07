@@ -41,14 +41,14 @@ namespace ControleLocacao.Domain.Entities
                 AddNotification(nameof(DataRetirada), $"O {nameof(DataRetirada)} é obrigatório");
 
 
-            if (DiariasPrevistas == null)
+            if (DiariasPrevistas == null || DiariasPrevistas == 0)
                 AddNotification(nameof(DiariasPrevistas), $"O {nameof(DiariasPrevistas)} é obrigatório");
         }
 
 
         public void Validate2()
         {
-            if (DiariasRealizada == null)
+            if (DiariasRealizada == null || DiariasRealizada == 0)
                 AddNotification(nameof(DiariasRealizada), $"O {nameof(DiariasRealizada)} é obrigatório");
         }
 
