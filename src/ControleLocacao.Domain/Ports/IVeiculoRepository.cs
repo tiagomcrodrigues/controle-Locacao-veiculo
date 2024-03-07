@@ -9,10 +9,10 @@ namespace ControleLocacao.Domain.Ports
 {
     public interface IVeiculoRepository
     {
-        int Add(Veiculo cliente);
+        int Add(Veiculo veiculo);
         void Delete(int id);
         IEnumerable<Veiculo> GetAll();
         Veiculo? GetById(int id);
-        void Update(Veiculo cliente);
+        void Update(Veiculo vaiculo);
     }
 }

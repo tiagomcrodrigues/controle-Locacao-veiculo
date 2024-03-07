@@ -15,10 +15,12 @@ namespace ControleLocacao.Domain.Services
     {
 
         private readonly IVeiculoRepository _veiculoRepository;
+        private readonly ICategoriaRepository _categoriaRepository;
 
-        public VeiculoService(IVeiculoRepository veiculoRepository)
+        public VeiculoService(IVeiculoRepository veiculoRepository, ICategoriaRepository categoriaRepository)
         {
             _veiculoRepository = veiculoRepository;
+            _categoriaRepository = categoriaRepository;
         }
 
         private Result<TResult> NotificationOrThrowException<TResult>(Exception ex, Veiculo veiculo)
@@ -34,6 +36,12 @@ namespace ControleLocacao.Domain.Services
             veiculo.Validate();
             if (!veiculo.IsValid)
                 return new Result<int>(veiculo.Notifications);
+            var categoria = _categoriaRepository.GetById(veiculo.Categoria.Id);
+            if (categoria == null)
+            {
+                veiculo.AddNotification($"Categotia Id","categoria não encontrada");
+                return new Result<int>(veiculo.Notifications);
+            }
 
             try
             {

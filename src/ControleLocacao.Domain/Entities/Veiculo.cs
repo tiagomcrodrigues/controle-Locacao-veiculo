@@ -29,7 +29,7 @@ namespace ControleLocacao.Domain.Entities
         public void Validate()
         {
             if (Categoria.Id <= 0)
-                AddNotification(nameof(Categoria.Id), $"A {nameof(Categoria.Id)} é obrigatório");
+                AddNotification(nameof(Categoria.Id), $"o {nameof(Categoria.Id)} é obrigatório");
 
             if (string.IsNullOrWhiteSpace(Marca))
                 AddNotification(nameof(Marca), "A marca é obrigatório");

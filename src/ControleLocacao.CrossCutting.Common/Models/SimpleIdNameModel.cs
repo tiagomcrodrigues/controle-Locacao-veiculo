@@ -10,7 +10,7 @@ namespace ControleLocacao.CrossCutting.Common.Models
     {
 
         public int Id { get; set; }
-        public string Nome { get; set; }
+        public string? Nome { get; set; }
 
         public object Select(Func<object, object> value)
         {

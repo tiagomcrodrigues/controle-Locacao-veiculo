@@ -23,7 +23,7 @@ namespace ControleLocacao.Api.Validators
                 .NotEmpty().WithMessage("Campo Versao é obrigatório")
                 .Length(2, 150).WithMessage("O campo Versao deve conter entre 2 e 150 caracteres");
 
-           
+
             RuleFor(c => c.AnoModelo)
                 .GreaterThan(0).WithMessage("O campo Ano Modelo deve ser maior que 0");
 
