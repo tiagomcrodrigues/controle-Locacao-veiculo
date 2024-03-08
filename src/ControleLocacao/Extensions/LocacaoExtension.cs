@@ -13,7 +13,7 @@ namespace ControleLocacao.Api.Extensions
             Id = id,
             Veiculo = new() { Id = reques.VeiculoId },
             Cliente = new() { Id = reques.ClienteId },
-            DataRetirada = reques.DataRetirada,
+            DataRetirada = reques.DataRetirada.ToLocalTime(),
             DiariasPrevistas = reques.DiariasPrevistas
 
         };

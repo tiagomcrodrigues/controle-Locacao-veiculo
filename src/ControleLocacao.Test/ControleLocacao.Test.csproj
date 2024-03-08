@@ -37,9 +37,4 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Application\" />
-    <Folder Include="Infra\" />
-  </ItemGroup>
-
 </Project>

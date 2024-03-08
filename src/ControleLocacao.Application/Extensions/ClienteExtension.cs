@@ -18,7 +18,7 @@ namespace ControleLocacao.Application.Extensions
                 ? new Cliente(dto.Id.Value)
                 : new Cliente();
             entidade.Nome = dto.Nome;
-            entidade.TipoPessoa = dto.TipoPessoa;
+            entidade.TipoPessoa = dto.TipoPessoa.ToUpper();
             entidade.Documento = dto.Documento;
             entidade.Telefone = dto.Telefone;
             entidade.Email = dto.Email;
@@ -33,7 +33,7 @@ namespace ControleLocacao.Application.Extensions
             return new(entidade.Id)
             {
                 Nome = entidade.Nome,
-                TipoPessoa = entidade.TipoPessoa,
+                TipoPessoa = entidade.TipoPessoa.ToUpper(),
                 Documento = entidade.Documento,
                 Telefone = entidade.Telefone,
                 Email = entidade.Email

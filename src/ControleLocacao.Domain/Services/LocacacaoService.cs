@@ -65,7 +65,7 @@ namespace ControleLocacao.Domain.Services
 
                 locacao.ValorDiaria = categoria.ValorDiaria;
                 locacao.ValorSeguro = categoria.ValorSeguro;
-                locacao.DataLimite = locacao.DataRetirada.AddDays(locacao.DiariasPrevistas+1);
+                locacao.DataLimite = locacao.DataRetirada.AddDays(locacao.DiariasPrevistas);
                 var soma = locacao.ValorSeguro + locacao.ValorDiaria;
                 locacao.TotalPrevisto = soma * locacao.DiariasPrevistas;
                 
