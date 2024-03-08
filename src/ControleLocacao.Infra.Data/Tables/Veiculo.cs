@@ -12,9 +12,9 @@ namespace ControleLocacao.Infra.Data.Tables
         public int AnoModelo { get; set; }
         public int AnoFabricacao { get; set; }
         public string? Placa { get; set; }
-        public bool Inativo { get; set; } 
+        public bool Inativo { get; set; }
 
-
+        public virtual ICollection<Locacao> Locacoes { get; set; }
         public virtual Categoria Categoria { get; set; }
     }
 }

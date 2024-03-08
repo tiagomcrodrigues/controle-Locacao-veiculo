@@ -11,6 +11,8 @@ using ControleLocacao.Application.Ports.Clientes;
 using ControleLocacao.Application.UseCases.Clientes;
 using ControleLocacao.Application.Ports.Veiculos;
 using ControleLocacao.Application.UseCases.Veiculos;
+using ControleLocacao.Application.UseCases.Locacaos;
+using ControleLocacao.Application.Ports.Locacaos;
 
 namespace ControleLocacao.CrossCutting.IoC
 {
@@ -37,12 +39,13 @@ namespace ControleLocacao.CrossCutting.IoC
             service.AddScoped<ICategoriaRepository, CategoriaRepository>();
             service.AddScoped<IClienteRepository, ClienteRepository>();
             service.AddScoped<IVeiculoRepository, VeiculoRepository>();
-
+            service.AddScoped<ILocacaoRepository, LocacaoRepository>();
 
             // Serviços de Domínio
             service.AddScoped<ICategoriaService, CategoriaService>();
             service.AddScoped<IClienteService, ClienteService>();
             service.AddScoped<IVeiculoService, VeiculoService>();
+            service.AddScoped<ILocacaoService, LocacaoService>();
 
             // Casos de Uso
             service.AddScoped<ICategoriaAddUseCase, CategoriaAddUseCase>();
@@ -51,11 +54,11 @@ namespace ControleLocacao.CrossCutting.IoC
             service.AddScoped<ICategoriaUpdateUseCase, CategoriaUpdateUseCase>();
             service.AddScoped<ICategoriaDeleteUseCase, CategoriaDeleteUseCase>();
 
-            service.AddScoped<IClienteAddUseCase    , ClienteAddUseCase>();
+            service.AddScoped<IClienteAddUseCase, ClienteAddUseCase>();
             service.AddScoped<IClienteGetByIdUseCase, ClienteGetByIdUseCase>();
-            service.AddScoped<IClienteGetAllUseCase , ClienteGetAllUseCase>();
-            service.AddScoped<IClienteUpdateUseCase , ClienteUpdateUseCase>();
-            service.AddScoped<IClienteDeleteUseCase , ClienteDeleteUseCase>();
+            service.AddScoped<IClienteGetAllUseCase, ClienteGetAllUseCase>();
+            service.AddScoped<IClienteUpdateUseCase, ClienteUpdateUseCase>();
+            service.AddScoped<IClienteDeleteUseCase, ClienteDeleteUseCase>();
 
 
             service.AddScoped<IVeiculoAddUseCase, VeiculoAddUseCase>();
@@ -64,7 +67,11 @@ namespace ControleLocacao.CrossCutting.IoC
             service.AddScoped<IVeiculoUpdateUseCase, VeiculoUpdateUseCase>();
             service.AddScoped<IVeiculoDeleteUseCase, VeiculoDeleteUseCase>();
 
-
+            service.AddScoped<ILocacaoAddUseCase, LocacaoAddUseCase>();
+            service.AddScoped<ILocacaoGetByIdUseCase, LocacaoGetByIdUseCase>();
+            service.AddScoped<ILocacaoGetAllUseCase, LocacaoGetAllUseCase>();
+            service.AddScoped<ILocacaoUpdateUseCase, LocacaoUpdateUseCase>();
+            service.AddScoped<ILocacaoDeleteUseCase, LocacaoDeleteUseCase>();
 
 
             return service;

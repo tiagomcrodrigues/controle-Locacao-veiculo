@@ -3,6 +3,7 @@ using System;
 using ControleLocacao.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleLocacao.Infra.Data.Migrations
 {
     [DbContext(typeof(DbLocacao))]
-    partial class DbLocacaoModelSnapshot : ModelSnapshot
+    [Migration("20240307220209_AddLocacao")]
+    partial class AddLocacao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,7 +113,7 @@ namespace ControleLocacao.Infra.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("ClienteId");
 
-                    b.Property<DateTime?>("DataEntrega")
+                    b.Property<DateTime>("DataEntrega")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("DataEntrega");
 
@@ -127,11 +129,11 @@ namespace ControleLocacao.Infra.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("DiariasPrevistas");
 
-                    b.Property<int?>("DiariasRealizada")
+                    b.Property<int>("DiariasRealizada")
                         .HasColumnType("int")
                         .HasColumnName("DiariasRealizada");
 
-                    b.Property<double?>("TotalPago")
+                    b.Property<double>("TotalPago")
                         .HasColumnType("double(16,2)")
                         .HasColumnName("TotalPago");
 

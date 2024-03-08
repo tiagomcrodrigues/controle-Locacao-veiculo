@@ -15,18 +15,18 @@ namespace ControleLocacao.Domain.Entities
             Id = id;
         }
 
-        public int Id { get; private set; }
-        public SimpleIdNameModel Cliente { get; set; }
-        public Veiculo Veiculo { get; set; }
+        public int Id { get;  set; }
+        public SimpleIdNameModel? Cliente { get; set; }
+        public Veiculo? Veiculo { get; set; }
         public DateTime DataRetirada { get; set; }
         public DateTime DataLimite { get; set; }
-        public DateTime DataEntrega { get; set; }
+        public DateTime? DataEntrega { get; set; }
         public double ValorDiaria { get; set; }
         public double ValorSeguro { get; set; }
         public int DiariasPrevistas { get; set; }
         public double TotalPrevisto { get; set; }
-        public int DiariasRealizada { get; set; }
-        public double TotalPago { get; set; }
+        public int? DiariasRealizada { get; set; }
+        public double? TotalPago { get; set; }
 
         public void Validate()
         {

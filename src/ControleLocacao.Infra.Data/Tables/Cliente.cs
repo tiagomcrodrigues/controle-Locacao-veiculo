@@ -16,6 +16,6 @@ namespace ControleLocacao.Infra.Data.Tables
         public string? Telefone { get; set; }
         public string? Email { get; set; }
 
-        
+        public virtual ICollection<Locacao> Locacoes { get; set; }
     }
 }

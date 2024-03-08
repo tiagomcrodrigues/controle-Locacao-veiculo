@@ -19,7 +19,12 @@ namespace ControleLocacao.Domain.Services
         private readonly IClienteRepository _clienteRepository;
         private readonly ICategoriaRepository _categoriaRepository;
 
-        public LocacaoService(ILocacaoRepository locacaoRepository, IVeiculoRepository veiculoRepository, IClienteRepository clienteRepository, ICategoriaRepository categoriaRepository)
+        public LocacaoService(
+            ILocacaoRepository locacaoRepository,
+            IVeiculoRepository veiculoRepository,
+            IClienteRepository clienteRepository,
+            ICategoriaRepository categoriaRepository
+        )
         {
             _locacaoRepository = locacaoRepository;
             _veiculoRepository = veiculoRepository;
@@ -40,6 +45,14 @@ namespace ControleLocacao.Domain.Services
             locacao.Validate();
             if (!locacao.IsValid)
                 return new Result<int>(locacao.Notifications);
+
+            var clinete = _clienteRepository.GetById(locacao.Cliente.Id);
+            if (clinete == null)
+            {
+                locacao.AddNotification($"Cliente Id", "Cliente não encontrada");
+                return new Result<int>(locacao.Notifications);
+            }
+
             var veiculo = _veiculoRepository.GetById(locacao.Veiculo.Id);
             if (veiculo == null)
             {
@@ -48,48 +61,40 @@ namespace ControleLocacao.Domain.Services
             }
             else
             {
-                var categoria = _categoriaRepository.GetById(locacao.Veiculo.Categoria.Id);
+                var categoria = _categoriaRepository.GetById(veiculo.Categoria.Id);
 
                 locacao.ValorDiaria = categoria.ValorDiaria;
                 locacao.ValorSeguro = categoria.ValorSeguro;
-                locacao.Veiculo = veiculo;
-                locacao.DataLimite = DateTime.Now.AddDays(+(locacao.DiariasPrevistas));
+                locacao.DataLimite = locacao.DataRetirada.AddDays(locacao.DiariasPrevistas+1);
                 var soma = locacao.ValorSeguro + locacao.ValorDiaria;
                 locacao.TotalPrevisto = soma * locacao.DiariasPrevistas;
                 
             }
-            Veiculo veiculo1 = new Veiculo();
-            if (veiculo.Inativo == true)
+            
+
+           
+            locacao.Cliente.Nome = clinete.Nome;
+
+            var alugado = GetAlugago(locacao.Veiculo.Id);
+
+            if (alugado == null)
             {
-                locacao.AddNotification($"Veiculo", "veiculo ja alugado");
-                return new Result<int>(locacao.Notifications);
+                try
+                {
+                    var id = _locacaoRepository.Add(locacao);
+                    return new Result<int>(id);
+                }
+                catch (Exception ex)
+                {
+                    return NotificationOrThrowException<int>(ex, locacao);
+                }
             }
             else
             {
-                veiculo.Inativo = false;
-                veiculo1 = veiculo;
-            }
-            
-            var clinete = _clienteRepository.GetById(locacao.Cliente.Id);
-            if (clinete == null)
-            {
-                locacao.AddNotification($"Cliente Id", "Cliente não encontrada");
+                locacao.AddNotification($"Veiculo", "Veiculo ja alugado");
                 return new Result<int>(locacao.Notifications);
             }
-
-            locacao.Cliente.Id = clinete.Id;
-            locacao.Cliente.Nome = clinete.Nome;
-
-            try
-            {
-                _veiculoRepository.Update(veiculo1);
-                var id = _locacaoRepository.Add(locacao);
-                return new Result<int>(id);
-            }
-            catch (Exception ex)
-            {
-                return NotificationOrThrowException<int>(ex, locacao);
-            }
+            
         }
 
         public void Delete(int id)
@@ -101,41 +106,45 @@ namespace ControleLocacao.Domain.Services
         public Locacao? GetById(int id)
             => _locacaoRepository.GetById(id);
 
-        public IResult<bool> Update(Locacao locacao)
+        public IResult<bool> Update(Devolucao devolucao)
         {
-            if (locacao.Id <= 0)
-                locacao.AddNotification(nameof(locacao.Id), "Id informado é invalido");
+            if (devolucao.Id <= 0)
+                devolucao.AddNotification(nameof(devolucao.Id), "Id informado é invalido");
 
-            locacao.Validate2();
+            devolucao.Validate();
 
-            if (!locacao.IsValid)
-                return new Result<bool>(locacao.Notifications);
+            if (!devolucao.IsValid)
+                return new Result<bool>(devolucao.Notifications);
 
-            var locacao1 = _locacaoRepository.GetById(locacao.Id);
+            var locacao1 = _locacaoRepository.GetById(devolucao.Id);
             if (locacao1 == null)
-                locacao.AddNotification(nameof(locacao.Id), "Locação invalida");
+                devolucao.AddNotification(nameof(devolucao.Id), "Locação invalida");
 
-            locacao1.DataEntrega = locacao.DataEntrega;
-            locacao1.DiariasRealizada = (locacao.DataEntrega - locacao1.DataRetirada).Days;
-            var soma = locacao.ValorSeguro + locacao.ValorDiaria;
-            locacao1.TotalPago = soma * locacao.DiariasRealizada;
+            locacao1.DiariasRealizada = devolucao.DiariasRealizada;
+            locacao1.DataEntrega = (locacao1.DataRetirada.AddDays(devolucao.DiariasRealizada));
+            var soma = locacao1.ValorSeguro + locacao1.ValorDiaria;
+            locacao1.TotalPago = soma * devolucao.DiariasRealizada;
             
 
-            Veiculo veiculo = new Veiculo();
-            veiculo = _veiculoRepository.GetById(locacao.Veiculo.Id);
+           
             
-            veiculo.Inativo = true;
+            
             try
             {
-                _veiculoRepository.Update(veiculo);
+               
                 _locacaoRepository.Update(locacao1);
                 return new Result<bool>(true);
+                
 
             }
             catch (Exception ex)
             {
-                return NotificationOrThrowException<bool>(ex, locacao);
+                return NotificationOrThrowException<bool>(ex, locacao1);
             }
         }
+
+        public Locacao? GetAlugago(int id)
+            => _locacaoRepository.GetAlugago(id);
+        
     }
 }

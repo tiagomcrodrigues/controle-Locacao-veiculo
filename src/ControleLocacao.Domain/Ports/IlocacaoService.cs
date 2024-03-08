@@ -8,7 +8,8 @@ namespace ControleLocacao.Domain.Ports
         IResult<int> Add(Locacao locacao);
         void Delete(int id);
         IEnumerable<Locacao> GetAll();
+        Locacao? GetAlugago(int id);
         Locacao? GetById(int id);
-        IResult<bool> Update(Locacao locacao);
+        IResult<bool> Update(Devolucao devolucao);
     }
 }

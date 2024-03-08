@@ -1,5 +1,4 @@
 ﻿using ControleLocacao.CrossCutting.Common.Models;
-using ControleLocacao.Domain.Entities;
 
 namespace ControleLocacao.Application.Dto
 {
