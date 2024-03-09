@@ -33,7 +33,7 @@ namespace ControleLocacao.Infra.Data.Extensions
                  Veiculo = new()
                  {
                      Id = tabela.VeiculoId,
-                     Modelo = ($"Modelo :{tabela.Veiculo.Modelo}, Versao :{tabela.Veiculo.Versao}" )
+                     Modelo = ($"{tabela.Veiculo.Modelo} {tabela.Veiculo.Versao}" )
                  },
 
                  Cliente = new()
