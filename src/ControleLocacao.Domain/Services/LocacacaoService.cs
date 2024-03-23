@@ -2,6 +2,7 @@
 using ControleLocacao.Domain.Entities;
 using ControleLocacao.Domain.Ports;
 using Flunt.Notifications;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,23 +19,26 @@ namespace ControleLocacao.Domain.Services
         private readonly IVeiculoRepository _veiculoRepository;
         private readonly IClienteRepository _clienteRepository;
         private readonly ICategoriaRepository _categoriaRepository;
+        private readonly ILogger<LocacaoService> _logger;
 
         public LocacaoService(
             ILocacaoRepository locacaoRepository,
             IVeiculoRepository veiculoRepository,
             IClienteRepository clienteRepository,
-            ICategoriaRepository categoriaRepository
+            ICategoriaRepository categoriaRepository,
+            ILogger<LocacaoService> logger
         )
         {
             _locacaoRepository = locacaoRepository;
             _veiculoRepository = veiculoRepository;
             _clienteRepository = clienteRepository;
             _categoriaRepository = categoriaRepository;
+            _logger = logger;
         }
 
         private Result<TResult> NotificationOrThrowException<TResult>(Exception ex, Locacao locacao)
         {
-
+            _logger.LogError(ex, "Falha na operação de locação");
             if (ex.GetBaseException().Message.Contains($"UK_{nameof(Locacao)}"))
                 return new Result<TResult>(new Notification(nameof(Locacao), "Locacao já cadastrado"));
             throw ex;
@@ -82,6 +86,10 @@ namespace ControleLocacao.Domain.Services
                 try
                 {
                     var id = _locacaoRepository.Add(locacao);
+                    _logger.LogInformation(
+                        $"Locação realizada para o cliente {locacao.Cliente.Nome} " +
+                        $"do veículo {locacao.Veiculo.Modelo} por " +
+                        $"{locacao.DiariasPrevistas}");
                     return new Result<int>(id);
                 }
                 catch (Exception ex)
