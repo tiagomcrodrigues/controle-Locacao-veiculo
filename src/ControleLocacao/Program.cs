@@ -5,6 +5,8 @@ using FluentValidation.AspNetCore;
 using ControleLocacao.Api.Extensions;
 using System.Reflection;
 using FluentValidation;
+using Serilog;
+using ControleLocacao.Api.Models.Middleware;
 
 namespace ControleLocacao.Api
 {
@@ -13,6 +15,10 @@ namespace ControleLocacao.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Host.UseSerilog((context, loggerConfig) =>
+                loggerConfig.ReadFrom.Configuration(context.Configuration));
+
 
             // Add services to the container.
 
@@ -42,6 +48,9 @@ namespace ControleLocacao.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+
+            app.UseMiddleware<RequestResponseLoggerMiddleware>();
 
             app.UseAuthorization();
 
